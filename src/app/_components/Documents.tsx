@@ -1,5 +1,6 @@
 "use client";
 
+import { Pages } from "~/app/_components/Pages";
 import { api } from "~/trpc/react";
 import { UploadButton } from "~/utils/uploadthing";
 
@@ -48,12 +49,12 @@ export function Documents() {
           >
             <p>{document.name}</p>
             <p>Pages</p>
-            {document.pages.map((page) => (
-              <div key={page.id}>
-                <p>Page {page.pageNumber}</p>
-                <p>{page.content}</p>
-              </div>
-            ))}
+            <Pages
+              documentId={document.id}
+              pages={document.pages}
+              refetchDocuments={refetchDocuments}
+              voice={"LIkE7UokD6qnsryqjlPQ"}
+            />
           </div>
         ))}
       </div>
